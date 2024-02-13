@@ -31,7 +31,7 @@
         const data = []
         data.push({
             "role": "system",
-            "content": "Act as a renowned cook. [Ingredients] Find ingredients in local supermarkets to cook the dish user wants in the user's country. Provide the ingredient lists in English and the official language in the user's country. Use this format: Ingredient name in English (in the user's country language). [Recipe] Provide a recipe for the dish in english."
+            "content": "Act as a renowned cook. 1: Find ingredients in local supermarkets to cook the dish user wants in the user's country. Provide the ingredient lists in English and the official language in the user's country. Use this format: Ingredient name in English (in the user's country language). 2: Provide a recipe for the dish in english. Follow the format: [Title of the Dish], [Ingredients], [Recipe]"
         })
    
         $button.addEventListener('click', e => {
@@ -46,7 +46,7 @@
             $dishInput.value = ''
             $countryInput.value = ''
 
-            chatGPTAPI()
+            chatGPTAPI(data)
         })
 
 
@@ -65,6 +65,9 @@
                 console.log(res)
                 // 답변 온 것을 assistant로 저장
                 $answer.innerHTML = `<p>${res.choices[0].message.content}</p>`
+            }).catch(err => {
+                console.error('Error:', err)
+                $answer.innerHTML = `<p>Sorry, there was an error processing your request. Try again. </p>`
             })
         }
     </script>
