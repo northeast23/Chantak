@@ -39,7 +39,7 @@
   - Amazon Lightsail
 ...중략...
 ### 2.2 배포 URL
-- https://northeast23.github.com/Chantak
+- [https://northeast23.github.com/Chantak](https://northeast23.github.io/Chantak/)
 - 테스트용 계정
   ```
   id : test@test.test
