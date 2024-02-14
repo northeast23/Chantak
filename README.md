@@ -11,19 +11,25 @@
  
 
 ### 1.3 팀 구성
-- 실제 사진을 업로드 하시길 권합니다.
 <table>
 	<tr>
 		<th>이호준</th>
-		<th>이호준</th>
-		<th>이호준</th>
+		<th>이오름</th>
+		<th>김코딩</th>
+		<th>동북아</th>
+		<th>박캠프</th>
+		<th>기안</th>
 	</tr>
  	<tr>
 		<td><img src="my.jpg" width="100%"></td>
 		<td><img src="my.jpg" width="100%"></td>
 		<td><img src="my.jpg" width="100%"></td>
+		<td><img src="my.jpg" width="100%"></td>
+		<td><img src="my.jpg" width="100%"></td>
+		<td><img src="my.jpg" width="100%"></td>
 	</tr>
 </table>
+
 
 ## 2. 개발 환경 및 배포 URL
 ### 2.1 개발 환경
@@ -314,7 +320,7 @@ gantt
 - 팀장 : 이호준
 - FE : 이오름
 - FE : 김코딩
-- BE : northeast23
+- BE : 동북아아
 - BE : 박캠프
 - 디자인 : 기안
 
