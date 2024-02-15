@@ -9,10 +9,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <br><br><br>
     <h1><center>Chantak - Authentic Locally</center></h1> 
     <center><p> Enhance the authenticity of your dish by using local ingredients.</p></center>
-    <br><br>
+    <br>
     <div class="container">
         <div class="image-box">
             <img src="gimbap.webp" alt="Korean rolls called Gimbap">
@@ -37,8 +36,10 @@
 
     <div class="answer-box"> 
         <h2>Your Recipe</h2> 
-        <div id="ingredients"> Boiling .. </div>
-        <div id="recipe"></div>
+        <h3>[Ingredients]</h3>
+            <div id="ingredients">Searching..</div>
+        <h3>[Steps to cook]</h3>
+            <div id="recipe"></div>
         <p>This site utilizes generative AI. Always regard the results as a foundation or a source for your work.</p>
     <script>
         const $dishInput = document.querySelector('#dish')
@@ -49,15 +50,16 @@
         const url = `https://open-api.jejucodingcamp.workers.dev/`
 
         const data = []
+        /*
         data.push({
             "role": "system",
             "content": "당신은 유명한 요리사입니다. 사용자에게 원하는 요리와 나라를 입력받아 '재료'와 '조리법'을 제공할 수 있습니다. 재료를 표기할때는 English-amount-local language 로 표기해주세요. The cooking methods are in English. 결과는 json으로 다음과 같은 양식으로 제공합니다. {'재료': [재료1 용량1-현지어명칭1, 재료2 용량2-현지어 명칭2, 재료3 용량3-현지어 명칭3, 재료4 용량4-현지어 명칭4], '레시피': [레시피순서1, 레시피순서2, 레시피순서3]} 이와 같이 응답을 주세요. 반드시 JSON 형식으로 응답해야 합니다. 따옴표도 2중 따옴표로 해야하고요. 조리법이 영어인지 다시한번 확인하세요."
-        })  
-        
-        /*
-        data.push({
-        "You are a renowned chef. Collect the user's preferred dish and country to provide 'ingredients' and 'cooking methods'. Note the ingredients in 'English-local language-amount' format and ensure the cooking methods are in English. Deliver the response in the following JSON format: {'ingredients': ['ingredient1 - local name1 - amount1', 'ingredient2 - local name2 - amount2', 'ingredient3 - local name3 - amount3', 'ingredient4 - local name4 - amount4'], 'recipe': ['step1', 'step2', 'step3']}. Responses must adhere to JSON format, using double quotes for strings."
         })  */
+        
+        data.push({
+            "role": "system",
+            "content": "You are a renowned chef. Collect the user's preferred dish and country to provide 'ingredients' and 'cooking methods'. Note the ingredients in 'English amount - local language' format and ensure the cooking methods are in English. Deliver the response in the following JSON format: {'ingredients': ['ingredient1 amount1 - local name1', 'ingredient2 amount2 - local name2', 'ingredient3 amount3 - local name3', 'ingredient4 amount4 - local name4'], 'recipe': ['step1', 'step2', 'step3']}. Responses must adhere to JSON format, using double quotes for strings."
+        })  
 
         $button.addEventListener('click', e => {
             e.preventDefault()
@@ -85,20 +87,19 @@
             })
             .then(res => res.json())
             .then(res => {
-                // 여기 새로 들어감
                 console.log(res);
-                //console.log(res.choices[0].message.content)
+                console.log(res.choices[0].message.content)
 
                 // content 문자열을 JSON으로 파싱                
                 const content = JSON.parse(res.choices[0].message.content);
 
                 console.log(content);
                 // INGREDIENTS 섹션 추출
-                const ingredientsText = content['재료'];
+                const ingredientsText = content['ingredients'];
                 console.log(ingredientsText);
 
                 // RECIPE 섹션 추출 (RECIPE 이후의 내용을 모두 포함하도록 수정)
-                const recipeText = content['레시피']
+                const recipeText = content['recipe']
                 console.log(recipeText);
 
                 // INGREDIENTS를 HTML 리스트로 변환
@@ -109,7 +110,7 @@
 
                 // 결과를 HTML 요소에 표시
                 document.getElementById('ingredients').innerHTML = `<ul>${ingredientsHtml}</ul>`;
-                document.getElementById('recipe').innerHTML = `<ul>${recipeHtml}</ul>`;
+                document.getElementById('recipe').innerHTML = `<ol>${recipeHtml}</ol>`;
 
             }).catch(err => {
                 console.error('Error:', err);

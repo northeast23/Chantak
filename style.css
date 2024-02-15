@@ -4,7 +4,7 @@ body {
     color: #1b2625;
 }
 
-h1, h2 { 
+h1, h2, h3 { 
     color: #1b2625;
     font-family: 'Courier', sans-serif;
 }
@@ -83,7 +83,10 @@ label {
 }
 
 .ingredients, .recipe { 
-    margin: 70%;
+    /* align-items: flex-start; */
+    flex-direction: column;
+    margin: 50px;
+    /* width: 70%; */
     border: none;
     color:#1b2625;
 }
@@ -98,7 +101,7 @@ label {
     }
 
     .image-box,
-    .answer {
+    .ingredients, .recipe {
         flex-basis: auto;  
         max-width: none;  
     }
