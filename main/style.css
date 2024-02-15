@@ -14,8 +14,7 @@ h1, h2, h3 {
     display: flex; 
     align-items: flex-start;  
     gap: 20px;  
-    background-color:#f3e6e6;
-    border-radius: 20px;
+    background-color:#eeecf3;
 }
 
 .image-box {
@@ -80,7 +79,7 @@ label {
     flex-direction: column;
     gap: 20px;  
     border-style: solid;
-    border-color: #e2c2c1;
+    border-color: #eeecf3;
     border-radius: 20px;
 }
 
