@@ -24,7 +24,7 @@
                     <input type="text" id="dish" placeholder="To improve results, use English" >
                 </div>
                 <div class="form-group">
-                    <label for="country">Country of Your Kitchen</label>
+                    <label for="country">Which country is your kitchen located? </label>
                     <input type="text" id="country" placeholder="To improve results, use English">  
                 </div>
 
@@ -37,10 +37,13 @@
     <div class="answer-box"> 
         <h2>Your Recipe</h2> 
         <h3>[Ingredients]</h3>
-            <div id="ingredients">Searching..</div>
+        <div id="ingredients">Searching.. </p>
+        </div>
         <h3>[Steps to cook]</h3>
-            <div id="recipe"></div>
-        <p>This site utilizes generative AI. Always regard the results as a foundation or a source for your work.</p>
+        <div id="recipe">  </div>
+        <p><center> This site utilizes generative AI. Always regard the results as a foundation or a source for your work.</center></p>
+
+
     <script>
         const $dishInput = document.querySelector('#dish')
         const $countryInput = document.querySelector('#country')

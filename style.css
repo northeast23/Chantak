@@ -15,6 +15,7 @@ h1, h2, h3 {
     align-items: flex-start;  
     gap: 20px;  
     background-color:#f3e6e6;
+    border-radius: 20px;
 }
 
 .image-box {
@@ -32,7 +33,7 @@ h1, h2, h3 {
 
 .form-container {
     flex-grow: 1;  
-    margin: 50px;
+    margin: 30px;
     max-width: 500px;
     flex-direction: column;
     align-items: flex-start;
@@ -45,7 +46,7 @@ h1, h2, h3 {
 
 input {
     display: block;  
-    width: 100%;
+    width: 95%;
     margin-top: 5px;
     height: 50px;
     font-size: 16px;
@@ -57,7 +58,7 @@ input {
 button {
     display: block;  
     width: 100%;
-    margin: 0; 
+    margin-top: 60px;
     box-sizing: border-box;
     height: 50px;
     font-size: 16px;
@@ -80,16 +81,17 @@ label {
     gap: 20px;  
     border-style: solid;
     border-color: #e2c2c1;
+    border-radius: 20px;
 }
 
 .ingredients, .recipe { 
-    /* align-items: flex-start; */
+    align-items: flex-start;
     flex-direction: column;
-    margin: 50px;
-    /* width: 70%; */
+    margin-top: 5px;
+    /* width: 70%;  */
     border: none;
     color:#1b2625;
-}
+}  
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
@@ -100,7 +102,7 @@ label {
         width: 80%;
     }
 
-    .image-box,
+    .image-box, 
     .ingredients, .recipe {
         flex-basis: auto;  
         max-width: none;  
