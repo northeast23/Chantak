@@ -14,12 +14,9 @@
 -  사용자가 요리명과 거주국가를 입력하면 레시피를 제공
 
 ## 2. 개발 환경 및 배포 URL
-### 2.1 개발 환경
-- Web Framework
-  - Django 5.0 (Python 3.8)
-- 서비스 배포 환경
-  - Amazon Lightsail
-...중략...
+### 2.1 개발 스택
+- HTML/CSS/JavaScript
+
 ### 2.2 배포 URL
 - [https://northeast23.github.io/Chantak](https://northeast23.github.io/Chantak/)
 
