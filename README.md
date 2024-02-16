@@ -65,7 +65,8 @@ sequenceDiagram
 
 ## 4. 프로젝트 구조와 개발 일정
 ### 4.1 프로젝트 구조
-* 아래 구조는 계속 업데이트할 계획입니다.
+
+  
 ![image](https://github.com/northeast23/Chantak/assets/155033413/6093f6b8-9d30-4fef-942e-e58825fc0420)
  
 
@@ -88,31 +89,16 @@ gantt
     회원가입 페이지 : 24-02-16, 1d
     인증 접근 권한 : 24-02-19, 3d
     유저 추가 : 24-02-22, 1d
-    프로필 페이지 : 24-02-23, 1d    
-    
-    section 백엔드(BE)
-    chatGPT 연결 및 프롬프트 테스트 : 24-02-13, 1d
-    home 화면 : 24-02-14, 1d
-    로그인/로그아웃 : 24-02-15, 1d
-    회원가입 페이지 : 24-02-16, 1d
-    인증 접근 권한 : 24-02-19, 3d
-    유저 추가 : 24-02-22, 1d
-    프로필 페이지 : 24-02-23, 1d    
+    프로필 페이지 : 24-02-23, 1d       
 ```
 
 ## 5. 와이어프레임 / UI / BM
 
-### 5.1 와이어프레임
-- 아래 페이지별 상세 설명, 더 큰 이미지로 하나하나씩 설명 필요
-<img src="ui.png" width="60%">
-
-
-
-### 5.2 화면 설계
+### 5.1 화면 설계
 ![image-1](https://github.com/northeast23/Chantak/assets/155033413/41395d5e-77f5-472b-99d4-1c33470f58bb)
-![image-2](https://github.com/northeast23/Chantak/assets/155033413/149ca97e-735c-4d0e-8e18-abb0675d32f5)
-![image-3](https://github.com/northeast23/Chantak/assets/155033413/dc14dd18-779c-443d-8b28-8277c5a0cfb0)
-![image-4](https://github.com/northeast23/Chantak/assets/155033413/ea83ad77-6a1f-4ddd-bb23-80daa753430e)
+
+### 5.2 실행 화면
+![home](https://github.com/northeast23/Chantak/assets/155033413/c8f86f9d-881c-4c49-b6f5-585ba971de80)
 
 
 ## 6. 에러와 에러 해결
@@ -122,7 +108,4 @@ gantt
 * 한글로 사용자가 입력하는 경우 답변 처리가 안되거나 오류가 나는 경우가 더 많음.
 
   : 사용자가 영어로 입력하도록 유도하기위해 input 안내문구를 넣음.
-
-## 7. 개발하며 느낀점
-- 인공지능이 내 마음을 몰라준다.
-- 가볍고 쉬운 도구들이 많이 생겼는데 이제라도 알게되어 다행이다. 
+ 
