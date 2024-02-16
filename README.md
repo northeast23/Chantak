@@ -26,16 +26,7 @@
 
 ### 2.3 URL 구조
 
-|URL|페이지 설명|GET|POST|PUT|DELETE|로그인 권한| 작성자 권한|
-|------|---|:---:|:---:|:---:|:---:|:---:|:---:|
-|/accounts/login|로그인| |✔️| | | | |
-|/accounts/logout|로그아웃| |✔️| | | | |
-|/accounts/signup|회원가입| |✔️| | | | |
-|/accounts/profile|프로필 <br> 프로필 수정 <br> 회원 탈퇴|✔️<br> <br> <br>| |✔️|<br><br>✔️|✔️ <br> ✔️ <br> ✔️|<br> ✔️ <br> ✔️
-|/accounts/token/refresh|토큰갱신| |✔️| | | | |
-|/board|게시글 목록 <br> 게시글 생성|✔️<br><br>|<br>✔️| | | <br> ✔️| |
-|/board/{postid}|게시글 상세 <br> 게시글 수정 <br> 게시글 삭제|✔️<br><br><br>| |✔️|<br><br>✔️| <br> ✔️ <br> ✔️ | <br> ✔️ <br> ✔️
-<br>
+
 
 ## 3. 메인 기능 시퀀스 다이어그램 
 ```mermaid
