@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chantak - Authentic Locally</title>
+    <link rel="normalize" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1><center>Chantak - Authentic Locally</center></h1> 
+    <center><p> Enhance the authenticity of your dish by using local ingredients.</p></center>
+    <br>
+    <div class="container">
+        <div class="image-box">
+            <img src="gimbap.webp" alt="Korean rolls called Gimbap">
+        </div>
+
+        <div class="form-container">
+            <form>
+                <div class="form-group">
+                    <label for="dish">Name of Dish</label>
+                    <input type="text" id="dish" placeholder="To improve results, use English" >
+                </div>
+                <div class="form-group">
+                    <label for="country">Which country is your kitchen located? </label>
+                    <input type="text" id="country" placeholder="To improve results, use English">  
+                </div>
+
+                <button type="submit">Search</button>
+            
+            </form>
+        </div>
+    </div>
+
+    <div class="answer-box"> 
+        <h2>Your Recipe</h2> 
+        <h3>[Ingredients]</h3>
+        <div id="ingredients">Searching.. </p>
+        </div>
+        <h3>[Steps to cook]</h3>
+        <div id="recipe">  </div>
+        <p><center> This site utilizes generative AI. Always regard the results as a foundation or a source for your work.</center></p>
+
+
+    <script>
+        const $dishInput = document.querySelector('#dish')
+        const $countryInput = document.querySelector('#country')
+        const $button = document.querySelector('button')
+        const $answer = document.querySelector('.answer')
+
+        const url = `https://open-api.jejucodingcamp.workers.dev/`
+
+        const data = []
+        /*
+        data.push({
+            "role": "system",
+            "content": "당신은 유명한 요리사입니다. 사용자에게 원하는 요리와 나라를 입력받아 '재료'와 '조리법'을 제공할 수 있습니다. 재료를 표기할때는 English-amount-local language 로 표기해주세요. The cooking methods are in English. 결과는 json으로 다음과 같은 양식으로 제공합니다. {'재료': [재료1 용량1-현지어명칭1, 재료2 용량2-현지어 명칭2, 재료3 용량3-현지어 명칭3, 재료4 용량4-현지어 명칭4], '레시피': [레시피순서1, 레시피순서2, 레시피순서3]} 이와 같이 응답을 주세요. 반드시 JSON 형식으로 응답해야 합니다. 따옴표도 2중 따옴표로 해야하고요. 조리법이 영어인지 다시한번 확인하세요."
+        })  */
+        
+        data.push({
+            "role": "system",
+            "content": "You are a renowned chef. Collect the user's preferred dish and country to provide 'ingredients' and 'cooking methods'. Note the ingredients in 'English amount - local language' format and ensure the cooking methods are in English. Deliver the response in the following JSON format: {'ingredients': ['ingredient1 amount1 - local name1', 'ingredient2 amount2 - local name2', 'ingredient3 amount3 - local name3', 'ingredient4 amount4 - local name4'], 'recipe': ['step1', 'step2', 'step3']}. Responses must adhere to JSON format, using double quotes for strings."
+        })  
+
+        $button.addEventListener('click', e => {
+            e.preventDefault()
+            const contents =  "Dish: " + $dishInput.value + " , " + "Country: " + $countryInput.value
+            
+            data.push({
+                "role": "user",
+                "content": contents
+            })
+
+            $dishInput.value = ''
+            $countryInput.value = ''
+
+            chatGPTAPI(data)
+        })
+
+        function chatGPTAPI() {
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data),
+                redirect: 'follow'
+            })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                console.log(res.choices[0].message.content)
+
+                // content 문자열을 JSON으로 파싱                
+                const content = JSON.parse(res.choices[0].message.content);
+
+                console.log(content);
+                // INGREDIENTS 섹션 추출
+                const ingredientsText = content['ingredients'];
+                console.log(ingredientsText);
+
+                // RECIPE 섹션 추출 (RECIPE 이후의 내용을 모두 포함하도록 수정)
+                const recipeText = content['recipe']
+                console.log(recipeText);
+
+                // INGREDIENTS를 HTML 리스트로 변환
+                const ingredientsHtml = ingredientsText.map(ingredient => `<li>${ingredient.trim()}</li>`).join('');
+
+                // RECIPE를 HTML 리스트로 변환 (RECIPE 섹션에 대한 처리를 추가해야 함)
+                const recipeHtml = recipeText.map(recipe => `<li>${recipe.trim()}</li>`).join('');
+
+                // 결과를 HTML 요소에 표시
+                document.getElementById('ingredients').innerHTML = `<ul>${ingredientsHtml}</ul>`;
+                document.getElementById('recipe').innerHTML = `<ol>${recipeHtml}</ol>`;
+
+            }).catch(err => {
+                console.error('Error:', err);
+                $answer.innerHTML = `<p>Sorry, there was an error processing your request. Try again.</p>`;
+            });
+        }
+    </script>
+</body>
+</html>

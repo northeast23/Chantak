@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chantak - Authentic Locally</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <br><br><br>
+    <p><center><h1> Chantak - Authentic Locally </h1></center></p>
+    <br><br><br>
+    <div class="container">
+        <form>
+            <label for="dish">Name of Dish</label>
+            <input type="text" id="dish" placeholder="In English.."> <br><br>
+            <label for="country">Country of Your Kitchen</label>
+            <input type="text" id="country" placeholder="In English.."> <br><br>
+
+            <button id="btn" type="submit">Search</button>
+        </form>
+
+        <div class="answer"> Answer will show here..</div>
+    </div>
+
+    <script>
+        const $dishInput = document.querySelector('#dish')
+        const $countryInput = document.querySelector('#country')
+        const $button = document.querySelector('button')
+        const $answer = document.querySelector('.answer')
+
+        const url = `https://open-api.jejucodingcamp.workers.dev/`
+
+        const data = []
+        data.push({
+            "role": "system",
+            "content": "Act as a renowned cook. 1: Find ingredients in local supermarkets to cook the dish user wants in the user's country. Provide the ingredient lists in English and the official language in the user's country. Use this format: Ingredient name in English (in the user's country language). 2: Provide a recipe for the dish in english. Follow the format: [Title of the Dish], [Ingredients], [Recipe]. 3. Combine two results into one JSON file format."
+        })
+   
+        $button.addEventListener('click', e => {
+            e.preventDefault()
+            const contents =  "Dish: " + $dishInput.value + " , " + "Country: " + $countryInput.value
+            
+            data.push({
+                "role": "user",
+                "content": contents
+            })
+
+            $dishInput.value = ''
+            $countryInput.value = ''
+
+            chatGPTAPI(data)
+        })
+
+
+
+        function chatGPTAPI() {
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data),
+                redirect: 'follow'
+            })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res)
+                // 답변 온 것을 assistant로 저장
+                $answer.innerHTML = `<p>${res.choices[0].message.content}</p>`
+            }).catch(err => {
+                console.error('Error:', err)
+                $answer.innerHTML = `<p>Sorry, there was an error processing your request. Try again. </p>`
+            })
+        }
+    </script>
+    <br><br><br>
+    <p><h5> This site utilizes generative AI. Always regard the results as a foundation or a source for your work. </h5></p>
+</body>
+</html>

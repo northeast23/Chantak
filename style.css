@@ -1,0 +1,110 @@
+body {
+    background-color: #ffffff;
+    font-family: Open Sans;
+    color: #1b2625;
+}
+
+h1, h2, h3 { 
+    color: #1b2625;
+    font-family: 'Courier', sans-serif;
+}
+
+.container {
+    margin: 80px;
+    display: flex; 
+    align-items: flex-start;  
+    gap: 20px;  
+    background-color:#eeecf3;
+}
+
+.image-box {
+    flex-grow: 1;
+    max-width: 300px; /* Maximum width of the image box */
+    margin: 50px;
+}
+
+.image-box img {
+    width: 100%; /* Makes the image fully occupy the image box */
+    height: auto; /* Keeps the image aspect ratio intact */
+    border-color: #f0f0f0;
+    vertical-align:top;   
+}
+
+.form-container {
+    flex-grow: 1;  
+    margin: 30px;
+    max-width: 500px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+input {
+    display: block;  
+    width: 95%;
+    margin-top: 5px;
+    height: 50px;
+    font-size: 16px;
+    padding-left: 20px;
+    border: none;
+    background-color: #ffffff;
+}
+
+button {
+    display: block;  
+    width: 100%;
+    margin-top: 60px;
+    box-sizing: border-box;
+    height: 50px;
+    font-size: 16px;
+    border: none;
+    background-color: #1b2625;
+    color: #ffffff;
+}
+
+label {
+    display: block;
+    font-size: 20px;
+}
+
+.answer-box {
+    margin: 80px;
+    padding: 30px;
+    display: flex;  
+    align-items: flex-start;  
+    flex-direction: column;
+    gap: 20px;  
+    border-style: solid;
+    border-color: #eeecf3;
+    border-radius: 20px;
+}
+
+.ingredients, .recipe { 
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 5px;
+    /* width: 70%;  */
+    border: none;
+    color:#1b2625;
+}  
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;  
+    }
+    .form-container {
+        width: 80%;
+    }
+
+    .image-box, 
+    .ingredients, .recipe {
+        flex-basis: auto;  
+        max-width: none;  
+    }
+
+}
